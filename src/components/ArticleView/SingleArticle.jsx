@@ -1,0 +1,6 @@
+const SingleArticle =()=>{
+    return (
+        <ArticleCard />
+    )
+}
+

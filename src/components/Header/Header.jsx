@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <>
       <h1>NC-News</h1>
-        <BurgerMenu />
+      <BurgerMenu />
     </>
   );
 };

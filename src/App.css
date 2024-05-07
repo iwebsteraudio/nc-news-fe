@@ -21,8 +21,40 @@
   color: white;
   font-size: 0.5em;
 }
+
 body{
   width:100vw;
   display:inline-flex;
   flex-direction: column;
+  padding-top: 40px;
+  border-radius: 10px;
+}
+
+.article-preview-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  
+  border: 1px solid;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
+.head-content {
+
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.foot-content {
+  grid-row: 2;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+h2 {
+  font-size: 1em;
+}
+h3{
+  font-size: 0.75em;
 }
