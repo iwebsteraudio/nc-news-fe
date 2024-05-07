@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import FullArticleCard from './FullArticleCard'
-import { fetchAllArticles } from '../../Utils/Api';
 
 const SingleArticle = ()=>{
     const {article_id} = useParams();

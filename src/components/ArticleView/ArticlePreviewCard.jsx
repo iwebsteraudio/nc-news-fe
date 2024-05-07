@@ -1,7 +1,4 @@
-
-
 const ArticlePreviewCard = ({article}) => {
- 
     return (
     <div className="article-preview-container">
       <section className="head-content">

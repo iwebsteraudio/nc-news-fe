@@ -1,7 +1,19 @@
+import { useEffect } from "react";
+import { fetchArticleById } from "../../Utils/Api"
 
-
-const FullArticleCard = (article)=>{
-
+const FullArticleCard = ()=>{
+    const [isLoading, setIsLoading] = useState(true);
+    const [fullArticle, setFullArticle] = useState({})
+    
+    useEffect(()=>{
+        fetchArticleById().then((article)=>{
+            setFullArticle(article)
+            setIsLoading(false);
+        })
+    },[])
+    
+    if (isLoading) return <p>Loading your lovely, lovely content ...</p>
+    
     return (
         <>
         <h2>title: {article.title}</h2>
