@@ -1,33 +1,23 @@
+import { fetchAllArticles } from "../../Utils/Api"; 
+import { useEffect, useState } from "react";
 import ArticlePreviewCard from "./ArticlePreviewCard";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
 
 const AllArticles = () => {
-  const [articlesAll, setArticlesAll] = useState([]);
-  React.useEffect(() => {
-    axios
-      .get("https://nc-news-iweb.onrender.com/api/articles")
-      .then(({ data }) => {
-        const { articleData } = data;
-        setArticlesAll(articleData);
-      })
-      .catch((err) => {
-        Promise.reject(err);
-      });
-  }, []);
+  const [isLoading, setIsLoading] = useState(true);
+  const [allArticles, setAllArticles] = useState([])
+useEffect(()=>{
+  fetchAllArticles().then((articles)=>{
+    setAllArticles(articles)
+    setIsLoading(false);
+  })
+},[])
+
+  if (isLoading) return <p>Loading your feed, please be patient ...</p>;
 
   return (
     <ul>
-      {articlesAll.map((article) => (
-        <ArticlePreviewCard
-          key={article.article_id}
-          title={article.title}
-          topic={article.topic}
-          author={article.author}
-          votes={article.votes}
-          comment_count={article.comment_count}
-          date={article.created_at}
-        />
+      {allArticles.map((article) => (
+         <ArticlePreviewCard key={article.article_id} article={article} />
       ))}
     </ul>
   );

@@ -1,8 +1,11 @@
-const ArticlePreviewCard = (article) => {
-  return (
-    <div class="article-preview-container" key={article.article_id}>
+
+
+const ArticlePreviewCard = ({article}) => {
+ 
+    return (
+    <div className="article-preview-container">
       <section className="head-content">
-      <h2 >
+      <h2>
         {article.title}      
       </h2>
       <h3>by {article.author} in {article.topic}</h3>

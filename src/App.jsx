@@ -1,5 +1,6 @@
 import "./App.css";
 import AllArticles from "./components/ArticleView/AllArticles";
+import SingleArticle from "./components/ArticleView/SingleArticle";
 import Header from "./components/Header/Header";
 import { Routes, Route } from "react-router-dom";
 
@@ -13,6 +14,7 @@ function App() {
       <section className="body">
         <Routes>
           <Route path="/" element={<AllArticles />} />
+          <Route path="/articles/:article_id" element={<SingleArticle/>} />
         </Routes>
       </section>
     </div>
