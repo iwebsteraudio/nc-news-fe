@@ -4,6 +4,8 @@ import SingleArticle from "./components/ArticleView/SingleArticle";
 import Header from "./components/Header/Header";
 import { Routes, Route } from "react-router-dom";
 
+
+
 function App() {
   return (
     <div>

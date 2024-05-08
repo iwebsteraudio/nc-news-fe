@@ -1,16 +1,21 @@
+import { Link } from 'react-router-dom';
+
 const ArticlePreviewCard = ({article}) => {
     return (
     <div className="article-preview-container">
       <section className="head-content">
-      <h2>
-        {article.title}      
-      </h2>
+      
+      <Link to={`/articles/${article.article_id}`}>
+      <h2>{article.title}</h2>
       <h3>by {article.author} in {article.topic}</h3>
+      </Link>
+      
       </section>
+
       <section className="foot-content">
-      <p>comments {article.comment_count}</p>
+      <p>{article.comment_count} comments</p>
       <p>{article.date}</p>
-      <p>votes {article.votes}</p>
+      <p>{article.votes} votes</p>
       </section>
     </div>
   );

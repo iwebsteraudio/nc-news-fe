@@ -9,11 +9,11 @@ export const fetchAllArticles = () => {
       })
 }
 
-export const fetchArticleById = () => {
+export const fetchArticleById = (article_id) => {
   return axios
-  .get(`https://nc-news-iweb.onrender.com/api/articles/:${article_id}`)
+  .get(`https://nc-news-iweb.onrender.com/api/articles/${article_id}`)
   .then((response)=>{
-    console.log("HELLO FR API", response.data)
-    return response.data;
+    console.log(response)
+    return response.data.article;
   })
 }
