@@ -57,6 +57,13 @@ body{
   flex-direction: column;
   border: 1px solid #722626;
   margin-top: 100px;
+  border-radius: 10px;
+}
+
+.comment-card {
+  border: 1px solid #722626;
+  margin-top: 10px;
+  border-radius: 10px;
 }
 
 h2 {
