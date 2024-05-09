@@ -24,3 +24,12 @@ export const fetchCommentsByArticleId = (article_id) => {
     return response.data.commentData;
   })
 }
+
+export const patchVotesByArticle_Id = (article_id, inc_votes) => {
+  return axios
+  .patch(`https://nc-news-iweb.onrender.com/api/articles/${article_id}`, inc_votes)
+  .then((response)=>{
+    console.log(response)
+    return response;
+  })
+}
