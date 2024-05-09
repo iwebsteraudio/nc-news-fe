@@ -1,15 +1,18 @@
 import { fetchCommentsByArticleId } from "../../Utils/Api";
 import { useState, useEffect } from "react";
-import CommentCard from "./CommentCard";
+import CommentCard from "./Cards/CommentCard";
 
-const CommentSection = ({ article }) => {
+const CommentSection = ({ article }, { isLoading }) => {
   const [comments, setComments] = useState([]);
+
 
   useEffect(() => {
     fetchCommentsByArticleId(article.article_id).then((commentData) => {
       setComments(commentData);
     });
-  }, []);
+  }, [article]);
+
+  if (isLoading) return <p>Loading ...</p>
 
   return (
     <>

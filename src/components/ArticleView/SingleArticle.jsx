@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import FullArticleCard from "./FullArticleCard";
+import FullArticleCard from "./Cards/FullArticleCard";
 import CommentSection from "./CommentSection";
 import { fetchArticleById } from "../../Utils/Api";
 import { useParams } from "react-router-dom";
@@ -19,7 +19,7 @@ const SingleArticle = () => {
   return (
     <>
       <FullArticleCard isLoading={ isLoading } article={ article } />
-      <CommentSection article={article} />
+      <CommentSection article={article} isLoading={ isLoading }/>
     </>
   );
 };
