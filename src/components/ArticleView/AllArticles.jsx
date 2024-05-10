@@ -1,6 +1,6 @@
 import { fetchAllArticles } from "../../Utils/Api"; 
 import { useEffect, useState } from "react";
-import ArticlePreviewCard from "./Cards/ArticlePreviewCard"
+import ArticlePreviewCard from "./Cards/ArticlePreviewCard";
 
 const AllArticles = () => {
   const [isLoading, setIsLoading] = useState(true);
