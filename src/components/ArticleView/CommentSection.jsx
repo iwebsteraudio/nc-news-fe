@@ -15,7 +15,8 @@ const CommentSection = ({ article }) => {
       setIsLoading(false);
     });
   }, [article_id]);
-
+  
+  
   if (isLoading) return <p>Loading ...</p>;
   else
     return (
@@ -23,8 +24,8 @@ const CommentSection = ({ article }) => {
         <h2>Comments</h2>
         <PostCommentForm comments={comments} setComments={setComments} />
         <ul>
-          {comments.map((comment) => (
-            <CommentCard comment = {comment} />
+          {comments.map((comment,index) => (
+            <CommentCard key={index} comment={comment} setComments={setComments} />
           ))}
         </ul>
       </>
