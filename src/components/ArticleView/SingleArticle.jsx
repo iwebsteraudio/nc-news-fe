@@ -20,14 +20,15 @@ const SingleArticle = () => {
 
   return (
     <>
-      
-    <div className="article-card">
-      <h2>{article.title}</h2>
-      <img src={article.img_url}/>
-      <p>{article.body}</p>
-      <p>by {article.author} at {article.created_at}</p>
-         <VoteButtons article_id = { article.article_id } votes={ article.votes }/>
-    </div>
+      <div className="article-card">
+        <h2>{article.title}</h2>
+        <img src={article.img_url} />
+        <p>{article.body}</p>
+        <p>
+          by {article.author} at {article.created_at}
+        </p>
+        <VoteButtons votes={article.votes} />
+      </div>
       <CommentSection article={article} />
     </>
   );

@@ -1,4 +1,3 @@
-import VoteButtons from '../VoteButtons';
 import { Link } from 'react-router-dom';
 
 const ArticlePreviewCard = ({article}) => {
@@ -18,7 +17,7 @@ const ArticlePreviewCard = ({article}) => {
       <section className="foot-content">
       <p>{article.comment_count} comments</p>
       <p>{article.date}</p>
-      <VoteButtons votes={ article.votes }/>
+      <p>{article.votes} votes</p>
       </section>
     </div>
   );
