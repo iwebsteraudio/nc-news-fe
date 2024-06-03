@@ -6,6 +6,7 @@ const CommentCard = ({ comment, comments, setComments }) => {
   const handleDelete = () => {
     setComments((comment) => [comment, ...comments]);
     deleteCommentByCommentId(comment.comment_id).then((response) => {
+      console.log(response)
       return response;
     });
 };

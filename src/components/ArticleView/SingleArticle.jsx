@@ -22,7 +22,7 @@ const SingleArticle = () => {
     <>
       <div className="article-card">
         <h2>{article.title}</h2>
-        <img src={article.img_url} />
+        <img src={article.article_img_url} />
         <p>{article.body}</p>
         <p>
           by {article.author} at {article.created_at}

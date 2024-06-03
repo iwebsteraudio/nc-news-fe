@@ -8,6 +8,7 @@ const ArticlePreviewCard = ({article}) => {
       
       <Link to={`/articles/${article.article_id}`}>
       <h2>{article.title}</h2>
+      <img src={article.article_img_url} />
       <h3>by {article.author} in {article.topic}</h3>
       </Link>
       
