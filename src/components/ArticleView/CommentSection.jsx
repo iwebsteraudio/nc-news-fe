@@ -4,7 +4,7 @@ import CommentCard from "./Cards/CommentCard";
 import { useParams } from "react-router-dom";
 import PostCommentForm from "./Tools/PostCommentForm";
 
-const CommentSection = ({ article }) => {
+const CommentSection = ({article}) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,7 +14,7 @@ const CommentSection = ({ article }) => {
       setComments(commentData);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, [article_id, comments]);
   
   
   if (isLoading) return <p>Loading ...</p>;
@@ -25,7 +25,7 @@ const CommentSection = ({ article }) => {
         <PostCommentForm comments={comments} setComments={setComments} />
         <ul>
           {comments.map((comment,index) => (
-            <CommentCard key={index} comment={comment} setComments={setComments} />
+            <CommentCard key={index} comment={comment} setComments={setComments} comments={comments}/>
           ))}
         </ul>
       </>

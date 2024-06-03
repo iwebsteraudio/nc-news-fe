@@ -29,7 +29,7 @@ const SingleArticle = () => {
         </p>
         <VoteButtons votes={article.votes} />
       </div>
-      <CommentSection article={article} />
+      <CommentSection article={article}/>
     </>
   );
 };
