@@ -37,9 +37,15 @@ export const postCommentByArticle_Id = (article_id, commentData) => {
   return axios
     .post(
       `https://nc-news-iweb.onrender.com/api/articles/${article_id}/comments`,
-      {username:"grumpy19", body: commentData }
+      { username: "grumpy19", body: commentData }
     )
     .then((response) => {
       return response.data.commentData;
     });
+};
+
+export const deleteCommentByCommentId = (comment_id) => {
+  return axios.delete(
+    `https://nc-news-iweb.onrender.com/api/comments/${comment_id}`
+  );
 };
