@@ -6,9 +6,11 @@ import { Routes, Route } from "react-router-dom";
 
 
 
+
 function App() {
   return (
     <div>
+      <ToggleTheme />
       <section className="header">
         <Header />
       </section>
