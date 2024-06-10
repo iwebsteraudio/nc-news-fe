@@ -1,6 +1,7 @@
 import React from "react";
-// import BurgerMenu from "./BurgerMenu";
-// import HamburgerIcon from "./Hamburger";
+import BurgerMenu from "./BurgerMenu";
+import HamburgerIcon from "./Hamburger";
+import LogIn from "../LogIn";
 
 const Header = () => {
   return (

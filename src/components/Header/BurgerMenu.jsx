@@ -10,7 +10,8 @@ const BurgerMenu = ()=>{
     return (
         <Menu>
         <Link to="/">Home</Link>
-        <Link to="/post">Post</Link>
+        {/* <Link to="/post">Post</Link> */}
+        <Link to= "/LogIn">Log In</Link>
         <a onClick={ showSettings } className="menu-item--small" href="">Settings</a>
       </Menu>
     )

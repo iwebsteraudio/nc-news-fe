@@ -26,6 +26,14 @@ export const fetchCommentsByArticleId = (article_id) => {
     });
 };
 
+export const fetchAllUsers = () => {
+  return axios
+    .get(`https://nc-news-iweb.onrender.com/api/users/`)
+    .then((response) => {
+      return response.data.userData;
+    });
+};
+
 export const patchVotesByArticle_Id = (article_id, inc_votes) => {
   return axios.patch(
     `https://nc-news-iweb.onrender.com/api/articles/${article_id}`,
