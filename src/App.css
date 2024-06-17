@@ -44,6 +44,15 @@
   font-size: 0.5em;
 }
 
+.banner-link {
+  font-size: xx-large;
+  padding: 10px;
+}
+
+.menu-link {
+  font-size: medium;
+}
+
 /* body{
   width:100vw;
   display:inline-flex;
@@ -100,6 +109,8 @@
   border-radius: 10px;
 
 }
+
+
 
 input[type=text], select, textarea {
   color: black;

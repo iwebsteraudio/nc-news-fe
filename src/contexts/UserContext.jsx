@@ -13,15 +13,13 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [users, setUsers] = useState([]);
 
-  useEffect =
-    (() => {
+  useEffect(() => {
       const fetchUsers = async () => {
         try {
           const userData = await fetchAllUsers();
           setUsers(userData);
-          console.log(userData);
         } catch (error) {
-          console.error("Error fetching users: ", error);
+          console.log("Error fetching users: ", error);
         }
       };
 

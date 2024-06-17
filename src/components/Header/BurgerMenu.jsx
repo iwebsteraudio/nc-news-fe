@@ -1,6 +1,7 @@
 import { slide as Menu } from 'react-burger-menu'
 import React from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 const BurgerMenu = ()=>{
       const showSettings = (event)=>{
@@ -8,11 +9,12 @@ const BurgerMenu = ()=>{
       }
 
     return (
+       
         <Menu>
-        <Link to="/">Home</Link>
+        <Link to="/" className='menu-link'>Home</Link>
         {/* <Link to="/post">Post</Link> */}
-        <Link to= "/LogIn">Log In</Link>
-        <a onClick={ showSettings } className="menu-item--small" href="">Settings</a>
+        <Link to= "/LogIn" className='menu-link'>Log In</Link>
+        <a onClick={ showSettings } className='menu-link' href="">Settings</a>
       </Menu>
     )
 }

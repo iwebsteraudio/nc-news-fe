@@ -1,13 +1,19 @@
-import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Nav from "./Nav";
 import BurgerMenu from "./BurgerMenu";
-import HamburgerIcon from "./Hamburger";
-import LogIn from "../LogIn";
+import Hamburger from "hamburger-react";
 
-const Header = () => {
+const Header = ({ isMobile }) => {
+  const [isOpen, setOpen] = useState(false);
+  
   return (
     <>
-      <h1>NC-News</h1>
-      {/* <BurgerMenu /> */}
+      <Link to="/" className="banner-link">
+        NC-News
+      </Link>
+      {isMobile ? <Hamburger toggled={isOpen} toggle={setOpen} /> : <Nav />}
+      <BurgerMenu isOpen={isOpen}/>
     </>
   );
 };
