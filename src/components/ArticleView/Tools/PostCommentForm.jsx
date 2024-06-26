@@ -34,7 +34,7 @@ const PostCommentForm = ({ comments, setComments }) => {
         value={commentData}
         onChange={(event) => setCommentData(event.target.value)}
       ></input>
-      <button type="submit" onClick={handleSubmit}>
+      <button type="submit" onClick={handleSubmit} className="btn btn-blue">
         submit comment
       </button>
       

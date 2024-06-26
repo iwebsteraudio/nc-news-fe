@@ -29,13 +29,13 @@ return (
   <div className="vote-buttons">
     <button onClick={()=>{
       handleClick(+1)
-    }} >+</button>
+    }} className="btn btn-blue" >+</button>
 
     <p>{ currVotes } votes</p>
     
     <button onClick={()=>{
       handleClick(-1)
-    }}>-</button>
+    }} className="btn btn-blue">-</button>
   </div>
 )};
 

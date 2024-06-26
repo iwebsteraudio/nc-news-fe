@@ -20,9 +20,9 @@ const SingleArticle = () => {
 
   return (
     <>
-      <div className="article-card">
+      <div className="border-b border-gray-500 flex flex-col justify-between items-center px-8 my-8">
         <h2>{article.title}</h2>
-        <img src={article.article_img_url} />
+        <img src={article.article_img_url} className="m-8 max-w-md"/>
         <p>{article.body}</p>
         <p>
           by {article.author} at {article.created_at}
