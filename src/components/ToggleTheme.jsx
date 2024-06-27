@@ -11,8 +11,8 @@ const ToggleTheme = () => {
   };
 
   return (
-    <button onClick={toggleTheme} className={`button__${theme}`}>
-      Change theme
+    <button onClick={toggleTheme} className={`button__${theme} btn btn-blue`}>
+     changetheme
     </button>
   );
 };
