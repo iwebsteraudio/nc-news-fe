@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const storedUser = localStorage.getItem("user")
+
 export const fetchAllArticles = () => {
   return axios
     .get(`https://nc-news-iweb.onrender.com/api/articles`)
@@ -46,7 +48,7 @@ export const postCommentByArticle_Id = (article_id, commentData) => {
   return axios
     .post(
       `https://nc-news-iweb.onrender.com/api/articles/${article_id}/comments`,
-      { username: "grumpy19", body: commentData }
+      { username: storedUser, body: commentData }
     )
     .then((response) => {
       return response.data.commentData;

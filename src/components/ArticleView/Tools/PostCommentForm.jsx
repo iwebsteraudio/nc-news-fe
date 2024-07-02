@@ -1,11 +1,13 @@
 
 import { useParams } from "react-router-dom";
 import { postCommentByArticle_Id } from "../../../Utils/Api";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../../contexts/UserContext";
 
 const PostCommentForm = ({ comments, setComments }) => {
   const [commentData, setCommentData] = useState("");
   const [err, setErr] = useState(null);
+  const { user, storedUser } = useContext(UserContext)
 
   const { article_id } = useParams();
 

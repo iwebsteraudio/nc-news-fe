@@ -13,18 +13,24 @@ export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-      const fetchUsers = async () => {
-        try {
-          const userData = await fetchAllUsers();
-          setUsers(userData);
-        } catch (error) {
-          console.log("Error fetching users: ", error);
-        }
-      };
+    const initUser = () => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(storedUser);
+      }
+    };
 
-      fetchUsers();
-    },
-    []);
+    const fetchUsers = async () => {
+      try {
+        const userData = await fetchAllUsers();
+        setUsers(userData);
+      } catch (error) {
+        console.log("Error fetching users: ", error);
+      }
+    };
+    initUser();
+    fetchUsers();
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser, users, setUsers }}>

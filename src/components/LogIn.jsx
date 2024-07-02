@@ -13,6 +13,8 @@ const LogIn = () => {
     if (username && password) {
       setUser(username);
 
+      localStorage.setItem('user', username)
+
       console.log("user logged in:", username);
     } else {
       alert("Please enter a username and password");
