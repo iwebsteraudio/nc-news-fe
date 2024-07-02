@@ -17,6 +17,7 @@ const CommentCard = ({ comment, formattedDate, setComments, comments }) => {
       setErr("something went wrong, please try again");
     });
   };
+  console.log(user)
 
   return (
     <div className="flex flex-col border-b border-gray-500 p-4">
@@ -25,7 +26,7 @@ const CommentCard = ({ comment, formattedDate, setComments, comments }) => {
         by {comment.author} at {formattedDate || comment.createdat}
       </p>
       <p className="mx-4"> {comment.votes} votes </p>
-      {user && (
+      {user === comment.author && (
         <button onClick={handleDelete} className="btn btn-blue self-end">
           delete
         </button>
