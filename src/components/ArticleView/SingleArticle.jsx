@@ -11,7 +11,15 @@ const SingleArticle = () => {
 
   useEffect(() => {
     fetchArticleById(article_id).then((article) => {
-      setArticle(article);
+      const formattedDate = new Date(article.created_at).toLocaleDateString(
+        "en-GB",
+        {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        }
+      );
+      setArticle({ ...article, created_at: formattedDate });
       setIsLoading(false);
     });
   }, []);
@@ -21,15 +29,15 @@ const SingleArticle = () => {
   return (
     <>
       <div className="border-b border-gray-500 flex flex-col justify-between items-center px-8 my-8">
-        <h2>{article.title}</h2>
-        <img src={article.article_img_url} className="m-8 max-w-md"/>
-        <p>{article.body}</p>
-        <p>
+        <h2 className="font-bold">{article.title}</h2>
+        <img src={article.article_img_url} className="m-8 max-w-md" />
+        <p className="mt-8">{article.body}</p>
+        <p className="mb-8">
           by {article.author} at {article.created_at}
         </p>
-        <VoteButtons votes={article.votes} />
+        <VoteButtons votes={article.votes}/>
       </div>
-      <CommentSection article={article}/>
+      <CommentSection />
     </>
   );
 };

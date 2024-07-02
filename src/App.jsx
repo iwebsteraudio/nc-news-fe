@@ -12,7 +12,7 @@ import Nav from "./components/Nav";
 function App() {
   const { theme } = useContext(ThemeContext);
   return (
-    <div className={`App__${theme} flex flex-col min-h-screen`}>
+    <div className={`App__${theme} flex flex-col min-h-screen font-sans`}>
       <Header />
 
       <div className="flex-grow">

@@ -25,7 +25,7 @@ const LogIn = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 font-sans">
       <form
         className="w-full max-w-sm bg-white rounded-lg shadow-md p-8"
         onSubmit={handleLogin}
@@ -61,7 +61,7 @@ const LogIn = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
+          className="btn btn-blue w-full text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Log In
         </button>

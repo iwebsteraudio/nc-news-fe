@@ -5,6 +5,7 @@ export const fetchAllArticles = () => {
     .get(`https://nc-news-iweb.onrender.com/api/articles`)
     .then((response) => {
       return response.data.articleData;
+      
     });
 };
 
