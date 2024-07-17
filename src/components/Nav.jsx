@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { UserContext } from "../contexts/UserContext";
@@ -18,7 +18,7 @@ const NavLinks = () => {
         <div className="flex items-center space-x-4">
           <span className="text-gray-700">Hey {user}</span>
           <button onClick={handleLogout} className="px-4 py-2">
-            Logout
+            logout
           </button>
         </div>
       ) : (
@@ -26,12 +26,19 @@ const NavLinks = () => {
           login
         </NavLink>
       )}
-      <NavLink to="/cooking" className={"px-4 py-2"}>
-        Cooking
+      {
+        <>
+        <NavLink to="/topics/cooking" className={"px-4 py-2"}>
+          cooking
+        </NavLink>
+        <NavLink to="/topics/coding" className={"px-4 py-2"}>
+        coding
       </NavLink>
-      <NavLink to="/politics" className={"px-4 py-2"}>
-        Politics
-      </NavLink>
+      <NavLink to="/topics/sport" className={"px-4 py-2"}>
+          sport
+        </NavLink>
+      </>
+      }
     </>
   );
 };

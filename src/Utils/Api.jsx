@@ -60,3 +60,21 @@ export const deleteCommentByCommentId = (comment_id) => {
     `https://nc-news-iweb.onrender.com/api/comments/${comment_id}`
   );
 };
+
+export const fetchAllArticlesByTopic = (topic) =>{
+  return axios.get(
+    `https://nc-news-iweb.onrender.com/api/topics/${topic}`
+  )
+  .then((response) => {
+    return response.data.articleData;
+  })
+}
+
+export const fetchAllTopics = () =>{
+  return axios.get(
+   `https://nc-news-iweb.onrender.com/api/topics`
+  )
+  .then((response) => {
+    return response.data.topicData;
+  })
+}
