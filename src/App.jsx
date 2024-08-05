@@ -22,7 +22,9 @@ function App() {
       setAllArticles(articles);
       setIsLoading(false);
     });
-  }, []);
+  }, [allArticles]);
+
+  
 
   return (
     <div className={`App__${theme} flex flex-col min-h-screen font-sans`}>
@@ -30,6 +32,7 @@ function App() {
       <div className="flex-grow">
         <Nav />
         <main className="p-8">
+          
           <Routes>
             <Route
               path="/"

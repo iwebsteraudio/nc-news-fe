@@ -7,7 +7,6 @@ export const fetchAllArticles = () => {
     .get(`https://nc-news-iweb.onrender.com/api/articles`)
     .then((response) => {
       return response.data.articleData;
-      
     });
 };
 
@@ -60,18 +59,6 @@ export const deleteCommentByCommentId = (comment_id) => {
     `https://nc-news-iweb.onrender.com/api/comments/${comment_id}`
   );
 };
-
-// export const fetchAllArticlesByTopic = (topic) =>{
-//   return axios.get(
-//     `https://nc-news-iweb.onrender.com/api/topics/${topic}`
-//   )
-//   .then((response) => {
-//     console.log(`Here's your response: ${response}`)
-//     return response.data.articleData;
-//   }).catch((error)=>{
-//     console.log(`Api error: ${error}`)
-//   })
-// }
 
 export const fetchAllTopics = () =>{
   return axios.get(

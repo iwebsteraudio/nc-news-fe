@@ -1,11 +1,7 @@
-
-import { useEffect, useState } from "react";
 import ArticlePreviewCard from "./Cards/ArticlePreviewCard";
 
 const AllArticles = ({allArticles, isLoading}) => {
   
-
-
   if (isLoading) return <p>Loading your feed, please be patient ...</p>;
 
   return (

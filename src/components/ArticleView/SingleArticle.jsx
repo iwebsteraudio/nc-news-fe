@@ -8,6 +8,7 @@ const SingleArticle = () => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
+  const [articleDate, setArticleDate] = useState(article.created_at);
 
   useEffect(() => {
     fetchArticleById(article_id).then((article) => {
@@ -19,10 +20,11 @@ const SingleArticle = () => {
           year: "numeric",
         }
       );
-      setArticle({ ...article, created_at: formattedDate });
+      setArticleDate(formattedDate);
+      setArticle({ ...article, articleDate: articleDate });
       setIsLoading(false);
     });
-  }, []);
+  }, [article_id]);
 
   if (isLoading) return <p>Loading your lovely, lovely content ...</p>;
 
@@ -33,9 +35,9 @@ const SingleArticle = () => {
         <img src={article.article_img_url} className="m-8 max-w-md" />
         <p className="mt-8">{article.body}</p>
         <p className="mb-8">
-          by {article.author} at {article.created_at}
+          by {article.author} at {articleDate}
         </p>
-        <VoteButtons votes={article.votes}/>
+        <VoteButtons votes={article.votes} />
       </div>
       <CommentSection />
     </>

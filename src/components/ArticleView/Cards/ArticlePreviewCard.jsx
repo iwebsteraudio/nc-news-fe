@@ -1,10 +1,26 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ArticlePreviewCard = ({ article }) => {
+
+  const [articleDate, setArticleDate] = useState(article.created_at)
+  useEffect(()=>{
+    const formattedDate = new Date(article.created_at).toLocaleDateString(
+      "en-GB",
+      {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      }
+    );
+    setArticleDate(formattedDate)
+
+  }, [])
+
   return (
     <div className="article-preview-container flex flex-col border-b border-gray-500 p-8">
       <section>
-        <Link to={`/articles/${article.article_id}`}>
+        <Link to={{pathname: `/articles/${article.article_id}` }}>
           <h2 className="font-sans font-bold">{article.title}</h2>
         </Link>
 
@@ -16,7 +32,7 @@ const ArticlePreviewCard = ({ article }) => {
 
       <section className="foot-content">
         <p>{article.comment_count} comments</p>
-        <p>{article.date}</p>
+        <p>{articleDate}</p>
         <p>{article.votes} votes</p>
       </section>
     </div>
