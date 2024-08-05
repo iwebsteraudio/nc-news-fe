@@ -9,22 +9,47 @@ import LogIn from "./components/LogIn";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import AllArticlesTopic from "./components/ArticleView/AllArticlesTopic";
+import { fetchAllArticles } from "./Utils/Api";
 
 function App() {
   const { theme } = useContext(ThemeContext);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [allArticles, setAllArticles] = useState([]);
+  useEffect(() => {
+    fetchAllArticles().then((articles) => {
+      setAllArticles(articles);
+      setIsLoading(false);
+    });
+  }, []);
+
   return (
     <div className={`App__${theme} flex flex-col min-h-screen font-sans`}>
       <Header />
-
       <div className="flex-grow">
         <Nav />
         <main className="p-8">
-        <Routes>
-          <Route path="/" element={<AllArticles />} />
-          <Route path="/articles/:article_id" element={<SingleArticle />} />
-          <Route path="/topics/:topic" element={<AllArticlesTopic />} />
-          <Route path="/login" element={<LogIn />} />
-        </Routes>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <AllArticles allArticles={allArticles} isLoading={isLoading} setIsLoading={setIsLoading} />
+              }
+            />
+            <Route path="/articles/:article_id" element={<SingleArticle />} />
+            <Route
+              path="/topics/:topic"
+              element={
+                <AllArticlesTopic
+                  allArticles={allArticles}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                />
+              }
+            />
+            <Route path="/login" element={<LogIn />} />
+          </Routes>
         </main>
       </div>
     </div>

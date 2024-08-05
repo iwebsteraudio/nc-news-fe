@@ -34,8 +34,8 @@ const NavLinks = () => {
         <NavLink to="/topics/coding" className={"px-4 py-2"}>
         coding
       </NavLink>
-      <NavLink to="/topics/sport" className={"px-4 py-2"}>
-          sport
+      <NavLink to="/topics/football" className={"px-4 py-2"}>
+          football
         </NavLink>
       </>
       }
