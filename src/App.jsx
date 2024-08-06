@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import AllArticlesTopic from "./components/ArticleView/AllArticlesTopic";
 import { fetchAllArticles } from "./Utils/Api";
+import SortBy from "./components/ArticleView/Tools/SortBy";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -24,20 +25,24 @@ function App() {
     });
   }, [allArticles]);
 
-  
-
   return (
     <div className={`App__${theme} flex flex-col min-h-screen font-sans`}>
       <Header />
       <div className="flex-grow">
         <Nav />
         <main className="p-8">
-          
+          <div className="flex justify-end">
+            <SortBy className="items-end" />
+          </div>
           <Routes>
             <Route
               path="/"
               element={
-                <AllArticles allArticles={allArticles} isLoading={isLoading} setIsLoading={setIsLoading} />
+                <AllArticles
+                  allArticles={allArticles}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                />
               }
             />
             <Route path="/articles/:article_id" element={<SingleArticle />} />

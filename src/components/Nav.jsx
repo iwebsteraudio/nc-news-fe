@@ -37,6 +37,10 @@ const NavLinks = () => {
       <NavLink to="/topics/football" className={"px-4 py-2"}>
           football
         </NavLink>
+        <NavLink to="/topics/cats" className={"px-4 py-2"}>
+          cats
+        </NavLink>
+        
       </>
       }
     </>
