@@ -1,11 +1,12 @@
+import { useEffect } from "react";
 import ArticlePreviewCard from "./Cards/ArticlePreviewCard";
 import { useParams } from "react-router-dom";
 
-const AllArticlesTopic = ({ allArticles, isLoading }) => {
+const AllArticlesTopic = ({ allArticles, setAllArticles, isLoading, setIsLoading }) => {
   const { topic } = useParams();
-
+  
   if (isLoading) return <p>Loading your feed, please be patient ...</p>;
-
+  
   return (
     <ul>
       {allArticles.map(

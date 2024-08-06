@@ -23,7 +23,7 @@ function App() {
       setAllArticles(articles);
       setIsLoading(false);
     });
-  }, [allArticles]);
+  }, [setAllArticles]);
 
   return (
     <div className={`App__${theme} flex flex-col min-h-screen font-sans`}>
@@ -47,10 +47,11 @@ function App() {
             />
             <Route path="/articles/:article_id" element={<SingleArticle />} />
             <Route
-              path="/topics/:topic"
+              path="/articles/topic/:topic"
               element={
                 <AllArticlesTopic
                   allArticles={allArticles}
+                  setAllArticles={setAllArticles}
                   isLoading={isLoading}
                   setIsLoading={setIsLoading}
                 />

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const storedUser = localStorage.getItem("user")
+const storedUser = localStorage.getItem("user");
 
 export const fetchAllArticles = () => {
   return axios
@@ -60,11 +60,10 @@ export const deleteCommentByCommentId = (comment_id) => {
   );
 };
 
-export const fetchAllTopics = () =>{
-  return axios.get(
-   `https://nc-news-iweb.onrender.com/api/topics`
-  )
-  .then((response) => {
-    return response.data.topicData;
-  })
-}
+export const fetchAllTopics = () => {
+  return axios
+    .get(`https://nc-news-iweb.onrender.com/api/topics`)
+    .then((response) => {
+      return response.data.topicData;
+    });
+};

@@ -28,17 +28,14 @@ const NavLinks = () => {
       )}
       {
         <>
-        <NavLink to="/topics/cooking" className={"px-4 py-2"}>
+        <NavLink to="/articles/topic/cooking" className={"px-4 py-2"}>
           cooking
         </NavLink>
-        <NavLink to="/topics/coding" className={"px-4 py-2"}>
+        <NavLink to="/articles/topic/coding" className={"px-4 py-2"}>
         coding
       </NavLink>
-      <NavLink to="/topics/football" className={"px-4 py-2"}>
+      <NavLink to="/articles/topic/football" className={"px-4 py-2"}>
           football
-        </NavLink>
-        <NavLink to="/topics/cats" className={"px-4 py-2"}>
-          cats
         </NavLink>
         
       </>
