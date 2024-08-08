@@ -16,7 +16,7 @@ const NavLinks = () => {
     <>
       {user ? (
         <div className="flex items-center space-x-4">
-          <span className="text-gray-700">Hey {user}</span>
+          <span className="text-gray-700"><NavLink to={`/users/${user}`}>Hey {user} </NavLink></span>
           <button onClick={handleLogout} className="px-4 py-2">
             logout
           </button>

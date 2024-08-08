@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const ArticlePreviewCard = ({ article }) => {
-
-  const [articleDate, setArticleDate] = useState(article.created_at)
-  useEffect(()=>{
+  const [articleDate, setArticleDate] = useState(article.created_at);
+  useEffect(() => {
     const formattedDate = new Date(article.created_at).toLocaleDateString(
       "en-GB",
       {
@@ -13,23 +12,23 @@ const ArticlePreviewCard = ({ article }) => {
         year: "numeric",
       }
     );
-    setArticleDate(formattedDate)
-
-  }, [])
+    setArticleDate(formattedDate);
+  }, []);
 
   return (
     <div className="article-preview-container flex flex-col border-b border-gray-500 p-8">
       <section>
-        <Link to={{pathname: `/articles/${article.article_id}` }}>
+        <Link to={{ pathname: `/articles/${article.article_id}` }}>
           <h2 className="font-sans font-bold">{article.title}</h2>
         </Link>
 
         <img src={article.article_img_url} className="mx-auto" />
-        <h3>
-          by {article.author} in {article.topic}
-        </h3>
+        <span>by </span>
+        <NavLink to={`/users/${article.author}`} className="font-bold">
+          {article.author}
+        </NavLink>
+        <span> at {articleDate}</span>
       </section>
-
       <section className="foot-content">
         <p>{article.comment_count} comments</p>
         <p>{articleDate}</p>

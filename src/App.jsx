@@ -11,6 +11,7 @@ import Nav from "./components/Nav";
 import AllArticlesTopic from "./components/ArticleView/AllArticlesTopic";
 import { fetchAllArticles } from "./Utils/Api";
 import SortBy from "./components/ArticleView/Tools/SortBy";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -58,6 +59,7 @@ function App() {
               }
             />
             <Route path="/login" element={<LogIn />} />
+            <Route path="/users/:username" element={<UserProfile />} />
           </Routes>
         </main>
       </div>

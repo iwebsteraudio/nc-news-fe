@@ -67,3 +67,11 @@ export const fetchAllTopics = () => {
       return response.data.topicData;
     });
 };
+
+export const fetchUserByUsername = (username) => {
+  console.log("We here at least?")
+  return axios.get(`https://nc-news-iweb.onrender.com/api/users/${username}`)
+  .then((response)=>{
+    return response.data.userData;
+  });
+};

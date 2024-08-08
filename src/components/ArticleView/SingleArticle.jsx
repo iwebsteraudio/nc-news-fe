@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CommentSection from "./CommentSection";
 import { fetchArticleById } from "../../Utils/Api";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import VoteButtons from "./Tools/VoteButtons";
 
 const SingleArticle = () => {
@@ -34,9 +34,11 @@ const SingleArticle = () => {
         <h2 className="font-bold">{article.title}</h2>
         <img src={article.article_img_url} className="m-8 max-w-md" />
         <p className="mt-8">{article.body}</p>
-        <p className="mb-8">
-          by {article.author} at {articleDate}
-        </p>
+        <span>by </span>
+        <NavLink to={`/users/${article.author}`} className="font-bold">
+          {article.author}
+        </NavLink>
+        <span> at {articleDate}</span>
         <VoteButtons votes={article.votes} />
       </div>
       <CommentSection />

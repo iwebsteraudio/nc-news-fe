@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { deleteCommentByCommentId } from "../../../Utils/Api";
 import { UserContext } from "../../../contexts/UserContext";
+import { NavLink } from "react-router-dom";
 
 const CommentCard = ({ comment, formattedDate, setComments, comments }) => {
   const [err, setErr] = useState(null);
@@ -20,9 +21,12 @@ const CommentCard = ({ comment, formattedDate, setComments, comments }) => {
   return (
     <div className="flex flex-col border-b border-gray-500 p-4">
       <p className="mt-4">{comment.body}</p>
-      <p className="mx-4">
-        by {comment.author} at {formattedDate || comment.createdat}
-      </p>
+      <span>by </span>
+        <NavLink to={`/users/${comment.author}`} className="font-bold">
+          {comment.author}
+        </NavLink>
+        <span> at {formattedDate || comment.createdat}</span>
+     
       <p className="mx-4"> {comment.votes} votes </p>
       {user === comment.author && (
         <button onClick={handleDelete} className="btn btn-blue self-end">
