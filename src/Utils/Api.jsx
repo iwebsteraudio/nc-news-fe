@@ -2,27 +2,40 @@ import axios from "axios";
 
 const storedUser = localStorage.getItem("user");
 
-export const fetchAllArticles = () => {
+const BASE_URL = `https://nc-news-iweb.onrender.com/api`;
+
+export const fetchAllArticles = (params = {}) => {
+  const queryString = new URLSearchParams(params).toString();
+  const url = queryString
+    ? `${BASE_URL}/articles?${queryString}`
+    : `${BASE_URL}/articles`;
+
+  return axios.get(url).then((response) => {
+    return response.data.articleData;
+  });
+};
+
+export const fetchArticlesByTopic = (params = {}) => {
+  const queryString = new URLSearchParams(params).toString();
+  console.log(queryString)
+
   return axios
-    .get(`https://nc-news-iweb.onrender.com/api/articles`)
+    .get(`${BASE_URL}/articles?${queryString}`)
     .then((response) => {
+      console.log(response.data.articleData)
       return response.data.articleData;
     });
 };
 
 export const fetchArticleById = (article_id) => {
-  return axios
-    .get(`https://nc-news-iweb.onrender.com/api/articles/${article_id}`)
-    .then((response) => {
-      return response.data.article;
-    });
+  return axios.get(`${BASE_URL}/articles/${article_id}`).then((response) => {
+    return response.data.article;
+  });
 };
 
 export const fetchCommentsByArticleId = (article_id) => {
   return axios
-    .get(
-      `https://nc-news-iweb.onrender.com/api/articles/${article_id}/comments`
-    )
+    .get(`${BASE_URL}/articles/${article_id}/comments`)
     .then((response) => {
       return response.data.commentData;
     });
@@ -30,48 +43,40 @@ export const fetchCommentsByArticleId = (article_id) => {
 
 export const fetchAllUsers = () => {
   return axios
-    .get(`https://nc-news-iweb.onrender.com/api/users/`)
+    .get(`${BASE_URL}/users`)
     .then((response) => {
       return response.data.userData;
+    })
+    .catch((error) => {
+      return error;
     });
 };
 
 export const patchVotesByArticle_Id = (article_id, inc_votes) => {
-  return axios.patch(
-    `https://nc-news-iweb.onrender.com/api/articles/${article_id}`,
-    inc_votes
-  );
+  return axios.patch(`${BASE_URL}/articles/${article_id}`, inc_votes);
 };
 
 export const postCommentByArticle_Id = (article_id, commentData) => {
   return axios
-    .post(
-      `https://nc-news-iweb.onrender.com/api/articles/${article_id}/comments`,
-      { username: storedUser, body: commentData }
-    )
-    .then((response) => {
-      return response.data.commentData;
-    });
+    .post(`${BASE_URL}/articles/${article_id}/comments`, {
+      username: storedUser,
+      body: commentData,
+    })
+    .then((response) => response.data.commentData);
 };
 
 export const deleteCommentByCommentId = (comment_id) => {
-  return axios.delete(
-    `https://nc-news-iweb.onrender.com/api/comments/${comment_id}`
-  );
+  return axios.delete(`${BASE_URL}/comments/${comment_id}`);
 };
 
 export const fetchAllTopics = () => {
   return axios
-    .get(`https://nc-news-iweb.onrender.com/api/topics`)
-    .then((response) => {
-      return response.data.topicData;
-    });
+    .get(`${BASE_URL}/topics`)
+    .then((response) => response.data.topicData);
 };
 
 export const fetchUserByUsername = (username) => {
-  console.log("We here at least?")
-  return axios.get(`https://nc-news-iweb.onrender.com/api/users/${username}`)
-  .then((response)=>{
-    return response.data.userData;
-  });
+  return axios
+    .get(`${BASE_URL}/users/${username}`)
+    .then((response) => response.data.userData);
 };

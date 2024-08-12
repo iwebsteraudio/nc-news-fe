@@ -1,14 +1,53 @@
+import { fetchAllArticles, fetchArticlesByTopic } from "../../Utils/Api";
 import ArticlePreviewCard from "./Cards/ArticlePreviewCard";
+import SortBy from "./Tools/SortBy";
+import { useEffect, useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 
-const AllArticles = ({ allArticles, isLoading }) => {
+const AllArticles = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [allArticles, setAllArticles] = useState([]);
+  const [searchParams] = useSearchParams();
+
+  const { topic } = useParams();
+  const sortByQuery = searchParams.get("sort_by");
+  const orderByQuery = searchParams.get("order_by")
+
+  useEffect(() => {
+    const params = {};
+
+    if (topic) params.topic = topic;
+    if (sortByQuery) params.sort_by = sortByQuery;
+    if (orderByQuery) params.order_by = orderByQuery;
+
+    const fetchFunction = topic
+      ? () => fetchArticlesByTopic(params)
+      : () => fetchAllArticles(params);
+
+    fetchFunction()
+      .then((articles) => {
+        setAllArticles(articles);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log("Failed to fetch articles", err);
+        setIsLoading(false);
+      });
+  }, [topic, sortByQuery, orderByQuery]);
+
   if (isLoading) return <p>Loading your feed, please be patient ...</p>;
 
   return (
-    <ul>
-      {allArticles.map((article) => (
-        <ArticlePreviewCard key={article.article_id} article={article} />
-      ))}
-    </ul>
+    <>
+      <div className="flex justify-end">
+        <SortBy className="items-end" />
+      </div>
+      <ul>
+        {allArticles.map((article) => (
+          <ArticlePreviewCard key={article.article_id} article={article} />
+        ))}
+      </ul>
+    </>
   );
 };
 

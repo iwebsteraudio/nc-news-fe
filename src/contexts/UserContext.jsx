@@ -20,14 +20,16 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    const fetchUsers = async () => {
-      try {
-        const userData = await fetchAllUsers();
-        setUsers(userData);
-      } catch (error) {
-        console.log("Error fetching users: ", error);
-      }
+    const fetchUsers = () => {
+      fetchAllUsers()
+        .then((userData) => {
+          setUsers(userData);
+        })
+        .catch((error) => {
+          console.log("Error fetching users: ", error);
+        });
     };
+
     initUser();
     fetchUsers();
   }, []);

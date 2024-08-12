@@ -1,11 +1,8 @@
-import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { NavLink } from "react-router-dom";
 
 const SortBy = () => {
-  const [selectedOption, setSelectedOption] = useState("New");
-
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -20,7 +17,7 @@ const SortBy = () => {
       >
         <MenuItem>
           <NavLink
-            to="/New"
+            to="?sort_by=created_at"
             className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
           >
             New
@@ -29,7 +26,7 @@ const SortBy = () => {
 
         <MenuItem>
           <NavLink
-            to="/New"
+            to="?sort_by=comment_count"
             className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
           >
             Comments
@@ -37,7 +34,7 @@ const SortBy = () => {
         </MenuItem>
         <MenuItem>
           <NavLink
-            to="/New"
+            to="?sort_by=votes"
             className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
           >
             Popular
@@ -45,7 +42,7 @@ const SortBy = () => {
         </MenuItem>
         <MenuItem>
           <NavLink
-            to="/New"
+            to="?order_by=date"
             className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
           >
             Reverse Order

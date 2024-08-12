@@ -16,7 +16,9 @@ const NavLinks = () => {
     <>
       {user ? (
         <div className="flex items-center space-x-4">
-          <span className="text-gray-700"><NavLink to={`/users/${user}`}>Hey {user} </NavLink></span>
+          <span className="text-gray-700">
+            <NavLink to={`/users/${user}`}>Hey {user} </NavLink>
+          </span>
           <button onClick={handleLogout} className="px-4 py-2">
             logout
           </button>
@@ -28,17 +30,16 @@ const NavLinks = () => {
       )}
       {
         <>
-        <NavLink to="/articles/topic/cooking" className={"px-4 py-2"}>
-          cooking
-        </NavLink>
-        <NavLink to="/articles/topic/coding" className={"px-4 py-2"}>
-        coding
-      </NavLink>
-      <NavLink to="/articles/topic/football" className={"px-4 py-2"}>
-          football
-        </NavLink>
-        
-      </>
+          <NavLink to="/articles/topics/cooking" className={"px-4 py-2"}>
+            cooking
+          </NavLink>
+          <NavLink to="/articles/topics/coding" className={"px-4 py-2"}>
+            coding
+          </NavLink>
+          <NavLink to="/articles/topics/football" className={"px-4 py-2"}>
+            football
+          </NavLink>
+        </>
       }
     </>
   );
