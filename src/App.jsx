@@ -8,7 +8,7 @@ import { useContext } from "react";
 import LogIn from "./components/LogIn";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
-
+import ErrorPage from "./components/ErrorPage";
 import UserProfile from "./components/UserProfile";
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
             <Route path="/articles/topics/:topic" element={<AllArticles />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/users/:username" element={<UserProfile />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </main>
       </div>

@@ -5,6 +5,7 @@ const storedUser = localStorage.getItem("user");
 const BASE_URL = `https://nc-news-iweb.onrender.com/api`;
 
 export const fetchAllArticles = (params = {}) => {
+  console.log(params)
   const queryString = new URLSearchParams(params).toString();
   const url = queryString
     ? `${BASE_URL}/articles?${queryString}`
@@ -17,7 +18,6 @@ export const fetchAllArticles = (params = {}) => {
 
 export const fetchArticlesByTopic = (params = {}) => {
   const queryString = new URLSearchParams(params).toString();
-  console.log(queryString)
 
   return axios
     .get(`${BASE_URL}/articles?${queryString}`)
@@ -53,15 +53,23 @@ export const fetchAllUsers = () => {
 };
 
 export const patchVotesByArticle_Id = (article_id, inc_votes) => {
-  return axios.patch(`${BASE_URL}/articles/${article_id}`, inc_votes);
+  return axios
+  .patch(`${BASE_URL}/articles/${article_id}`, {inc_votes})
+  .then((response)=> {
+    return response.data.articleData})
+  .catch((err)=> {
+    console.log(`Error: ${err}`)}
+  )
 };
 
 export const postCommentByArticle_Id = (article_id, commentData) => {
   return axios
-    .post(`${BASE_URL}/articles/${article_id}/comments`, {
+    .post(`${BASE_URL}/articles/${article_id}/comments`,
+       {
       username: storedUser,
       body: commentData,
-    })
+    }
+  )
     .then((response) => response.data.commentData);
 };
 

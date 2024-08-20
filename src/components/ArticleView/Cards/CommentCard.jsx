@@ -29,7 +29,7 @@ const CommentCard = ({ comment, formattedDate, setComments, comments }) => {
      
       <p className="mx-4"> {comment.votes} votes </p>
       {user === comment.author && (
-        <button onClick={handleDelete} className="btn btn-blue self-end">
+        <button onClick={handleDelete} className="btn btn-std self-end">
           delete
         </button>
       )}

@@ -1,10 +1,13 @@
 import { FaChevronDown } from "react-icons/fa";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const SortBy = () => {
-
-  
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const currentOrderBy =
+    searchParams.get("order_by") === "asc" ? "asc" : "desc";
+  const newOrderBy = currentOrderBy === "asc" ? "desc" : "asc";
 
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -45,10 +48,10 @@ const SortBy = () => {
         </MenuItem>
         <MenuItem>
           <NavLink
-            to="?order_by=date"
+            to={`?order_by=${newOrderBy}`}
             className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
           >
-            Reverse Order
+            Reverse Order ({newOrderBy === "asc" ? "Ascending" : "Descending"})
           </NavLink>
         </MenuItem>
       </MenuItems>
