@@ -7,7 +7,6 @@ import { useContext } from "react";
 
 import LogIn from "./components/LogIn";
 import Header from "./components/Header";
-import Nav from "./components/Nav";
 import ErrorPage from "./components/ErrorPage";
 import UserProfile from "./components/UserProfile";
 
@@ -18,12 +17,11 @@ function App() {
     <div className={`App__${theme} flex flex-col min-h-screen font-sans`}>
       <Header />
       <div className="flex-grow">
-        <Nav />
-        <main className="p-8">
+        <main className="p-1">
           <Routes>
             <Route path="/" element={<AllArticles />} />
             <Route path="/articles/:article_id" element={<SingleArticle />} />
-            <Route path="/articles/topics/:topic" element={<AllArticles />} />
+            <Route path="/:topic/articles" element={<AllArticles />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/users/:username" element={<UserProfile />} />
             <Route path="*" element={<ErrorPage />} />

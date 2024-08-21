@@ -5,7 +5,6 @@ const storedUser = localStorage.getItem("user");
 const BASE_URL = `https://nc-news-iweb.onrender.com/api`;
 
 export const fetchAllArticles = (params = {}) => {
-  console.log(params)
   const queryString = new URLSearchParams(params).toString();
   const url = queryString
     ? `${BASE_URL}/articles?${queryString}`
@@ -22,7 +21,6 @@ export const fetchArticlesByTopic = (params = {}) => {
   return axios
     .get(`${BASE_URL}/articles?${queryString}`)
     .then((response) => {
-      console.log(response.data.articleData)
       return response.data.articleData;
     });
 };

@@ -2,9 +2,29 @@ import { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { UserContext } from "../contexts/UserContext";
+import { fetchAllTopics } from "../Utils/Api";
 
 const NavLinks = () => {
   const { user, setUser } = useContext(UserContext);
+
+  const [topics, setTopics] = useState([])
+
+  useEffect(()=>{
+    fetchAllTopics()
+    .then((topicData)=>{
+      setTopics(topicData)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  },[])
+
+  const formattedTopics = topics.map((topic)=>{
+    const topicSplit = topic.slug.split("-").map((word)=>{
+      return `${word[0].toUpperCase()}${word.slice(1,word.length)}`
+    })
+    return {...topic, nav: topicSplit.join(" ")}
+  })
 
   const handleLogout = () => {
     setUser(null);
@@ -15,30 +35,27 @@ const NavLinks = () => {
   return (
     <>
       {user ? (
-        <div className="flex items-center space-x-4">
-          <span className="text-gray-700">
-            <NavLink to={`/users/${user}`}>Hey {user} </NavLink>
-          </span>
-          <button onClick={handleLogout} className="px-4 py-2">
-            logout
+        <div className="flex items-center space-x-4 px-4">
+          
+            <NavLink to={`/users/${user}`}>{user} </NavLink>
+          
+          <button onClick={handleLogout} className="px-4">
+            Logout
           </button>
         </div>
       ) : (
-        <NavLink to="/login" className={"px-4 py-2"}>
+        <NavLink to="/login" className="px-4 py-2">
           login
         </NavLink>
       )}
       {
         <>
-          <NavLink to="/articles/topics/cooking" className={"px-4 py-2"}>
-            cooking
-          </NavLink>
-          <NavLink to="/articles/topics/coding" className={"px-4 py-2"}>
-            coding
-          </NavLink>
-          <NavLink to="/articles/topics/football" className={"px-4 py-2"}>
-            football
-          </NavLink>
+          <NavLink to="/" className={"px-4"}>All</NavLink>
+          {formattedTopics.map((topic)=>{
+            return (
+              <NavLink key={topic.slug} to={`/${topic.slug}/articles`} className={"px-4"}>{topic.nav}</NavLink>
+            )
+          })}
         </>
       }
     </>
@@ -53,7 +70,7 @@ const Nav = () => {
 
   return (
     <nav className="w-1/3">
-      <div className="hidden md:flex justify-between border-b border-gray-500 p-2">
+      <div className="hidden md:flex justify-evenly p-2">
         <NavLinks />
       </div>
 
