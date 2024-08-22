@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { patchVotesByArticle_Id } from "../../../Utils/Api";
 import { useParams } from "react-router-dom";
 import {

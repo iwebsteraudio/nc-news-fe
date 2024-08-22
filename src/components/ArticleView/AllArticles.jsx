@@ -2,7 +2,7 @@ import { fetchAllArticles, fetchArticlesByTopic } from "../../Utils/Api";
 import ArticlePreviewCard from "./Cards/ArticlePreviewCard";
 import SortBy from "./Tools/SortBy";
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { NavLink, useParams, useSearchParams } from "react-router-dom";
 
 const AllArticles = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +36,16 @@ const AllArticles = () => {
   }, [topic, sortByQuery, orderByQuery]);
 
   if (isLoading) return <p>Loading your feed, please be patient ...</p>;
+
+  if (allArticles.length === 0){
+    return (
+      <>
+      <h1 className="p-8 m-8">Error 404 - There are no articles in this topic.</h1>
+      <p className="p-8">Would you like to be the first to post?</p>
+      <NavLink to={`/${topic}/submitarticle`}>Submit</NavLink>
+      </>
+    )
+  }
 
   return (
     <>

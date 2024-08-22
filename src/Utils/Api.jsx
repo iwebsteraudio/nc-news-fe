@@ -18,11 +18,9 @@ export const fetchAllArticles = (params = {}) => {
 export const fetchArticlesByTopic = (params = {}) => {
   const queryString = new URLSearchParams(params).toString();
 
-  return axios
-    .get(`${BASE_URL}/articles?${queryString}`)
-    .then((response) => {
-      return response.data.articleData;
-    });
+  return axios.get(`${BASE_URL}/articles?${queryString}`).then((response) => {
+    return response.data.articleData;
+  });
 };
 
 export const fetchArticleById = (article_id) => {
@@ -52,22 +50,21 @@ export const fetchAllUsers = () => {
 
 export const patchVotesByArticle_Id = (article_id, inc_votes) => {
   return axios
-  .patch(`${BASE_URL}/articles/${article_id}`, {inc_votes})
-  .then((response)=> {
-    return response.data.articleData})
-  .catch((err)=> {
-    console.log(`Error: ${err}`)}
-  )
+    .patch(`${BASE_URL}/articles/${article_id}`, { inc_votes })
+    .then((response) => {
+      return response.data.articleData;
+    })
+    .catch((err) => {
+      console.log(`Error: ${err}`);
+    });
 };
 
 export const postCommentByArticle_Id = (article_id, commentData) => {
   return axios
-    .post(`${BASE_URL}/articles/${article_id}/comments`,
-       {
+    .post(`${BASE_URL}/articles/${article_id}/comments`, {
       username: storedUser,
       body: commentData,
-    }
-  )
+    })
     .then((response) => response.data.commentData);
 };
 
@@ -85,4 +82,15 @@ export const fetchUserByUsername = (username) => {
   return axios
     .get(`${BASE_URL}/users/${username}`)
     .then((response) => response.data.userData);
+};
+
+export const postNewTopic = (topicData) => {
+  return axios
+    .post(`${BASE_URL}/topics/`, topicData)
+    .then((response) => {
+      return response.data.topicData;
+    })
+    .catch((err) => {
+      return Promise.reject(err);
+    });
 };
