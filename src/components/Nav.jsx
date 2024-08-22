@@ -6,7 +6,6 @@ import { fetchAllTopics } from "../Utils/Api";
 
 const NavLinks = () => {
   const { user, setUser } = useContext(UserContext);
-
   const [topics, setTopics] = useState([])
 
   useEffect(()=>{
@@ -44,8 +43,8 @@ const NavLinks = () => {
           </button>
         </div>
       ) : (
-        <NavLink to="/login" className="px-4 py-2">
-          login
+        <NavLink to="/login" className="px-4 font-semibold">
+          Login
         </NavLink>
       )}
       {

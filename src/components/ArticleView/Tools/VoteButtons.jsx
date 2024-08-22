@@ -40,24 +40,24 @@ const VoteButtons = ({ votes }) => {
     <div className="vote-buttons flex p-3 mx-4">
       <button
         onClick={() => {
-          handleClick(-1);
-        }}
-        className="inline-flex w-full h-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-        disabled={voteStatus === -1}
-      >
-        {voteStatus === -1 ? <IoThumbsDown /> : <IoThumbsDownOutline />}
-      </button>
-
-      <p className="p-3">{currVotes} votes</p>
-
-      <button
-        onClick={() => {
           handleClick(+1);
         }}
         className="inline-flex w-full h-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
         disabled={voteStatus === 1}
       >
         {voteStatus === 1 ? <IoThumbsUp /> : <IoThumbsUpOutline />}
+      </button>
+
+      <p className="p-3">{currVotes} votes</p>
+
+      <button
+        onClick={() => {
+          handleClick(-1);
+        }}
+        className="inline-flex w-full h-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        disabled={voteStatus === -1}
+      >
+        {voteStatus === -1 ? <IoThumbsDown /> : <IoThumbsDownOutline />}
       </button>
       {err && <p className="text-red-500">{err}</p>}
     </div>

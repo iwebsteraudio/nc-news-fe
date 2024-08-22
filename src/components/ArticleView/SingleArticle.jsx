@@ -3,6 +3,7 @@ import CommentSection from "./CommentSection";
 import { fetchArticleById } from "../../Utils/Api";
 import { NavLink, useParams } from "react-router-dom";
 import VoteButtons from "./Tools/VoteButtons";
+import LoadingSpinner from "./Tools/LoadingSpinner";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
@@ -26,7 +27,13 @@ const SingleArticle = () => {
     });
   }, [article_id]);
 
-  if (isLoading) return <p>Loading your lovely, lovely content ...</p>;
+  if (isLoading) return (
+    <div className="p-20">
+    <LoadingSpinner />
+    <p>Loading your lovely, lovely content ...</p>
+    </div>
+    );
+  
 
   return (
     <>
