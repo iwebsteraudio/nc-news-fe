@@ -9,7 +9,7 @@ const Header = () => {
           <a href="/" className="text-xl font-bold font-serif">
             <h1 className="text-5xl">Newster</h1>
           </a>
-          <h3 className="text-base font-sans">Bagpiping fact into News</h3>
+          <h3 className="text-base font-sans">Real facts, real news!</h3>
         </div>
 
         <Nav className="border-t border-gray-500" />

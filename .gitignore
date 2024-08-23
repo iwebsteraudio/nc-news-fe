@@ -27,3 +27,5 @@ dist-ssr
 
 Burgermenu.jsx
 Hamburger.jsx
+# Local Netlify folder
+.netlify
