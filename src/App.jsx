@@ -12,6 +12,7 @@ import UserProfile from "./components/UserProfile";
 import CreateTopic from "./components/ArticleView/Tools/CreateTopic";
 import SubmitNewArticle from "./components/ArticleView/Tools/SubmitNewArticle";
 
+
 function App() {
   const { theme } = useContext(ThemeContext);
 

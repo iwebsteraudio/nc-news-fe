@@ -34,6 +34,8 @@ export const fetchCommentsByArticleId = (article_id) => {
     .get(`${BASE_URL}/articles/${article_id}/comments`)
     .then((response) => {
       return response.data.commentData;
+    }).catch((err)=>{
+      return err.msg;
     });
 };
 
@@ -93,4 +95,18 @@ export const postNewTopic = (topicData) => {
     .catch((err) => {
       return Promise.reject(err);
     });
+};
+
+export const postNewArticle = (articleData) => {
+
+  return articleData.title.length > 0 && articleData.body.length > 0
+    ? axios
+        .post(`${BASE_URL}/articles`, articleData)
+        .then((response) => {
+          return response.data.articleData;
+        })
+        .catch((err) => {
+          Promise.reject(err.msg);
+        })
+    : Promise.reject((err.msg = "Title and body cannot be blank"));
 };

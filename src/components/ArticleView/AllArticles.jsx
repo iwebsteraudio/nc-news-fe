@@ -4,6 +4,7 @@ import LoadingSpinner from "./Tools/LoadingSpinner";
 import SortBy from "./Tools/SortBy";
 import { useEffect, useState } from "react";
 import { NavLink, useParams, useSearchParams } from "react-router-dom";
+import { IoIosCreate } from "react-icons/io";
 
 const AllArticles = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,21 +59,39 @@ const AllArticles = () => {
 
   if (allArticles.length === 0 || err === 404) {
     return (
-      <>
+      <div className="flex flex-col items-center">
         <h1 className="p-8 m-8">
           Error 404 - There are no articles in this topic.
         </h1>
         <p className="p-8">Would you like to be the first to post?</p>
-        <NavLink to={`/${topic}/submitarticle`}>Submit</NavLink>
-      </>
+        <NavLink to={`/${topic}/submitarticle`} className={"btn-std  justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"}>
+              {" "}
+              {<IoIosCreate />} Submit an Article
+            </NavLink>
+      </div>
     );
   }
-
   return (
     <>
-      <div className="flex justify-end">
-        <SortBy className="items-end" />
+      <div className="flex justify-between">
+        <div className="justify-start p-4">
+          {topic ? (
+                    
+                    <NavLink to={`/${topic}/submitarticle`} className={"btn-std inline-flex justify-center gap-x-1.5 rounded-md bg-white text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"}>
+                          {" "}
+                          {<IoIosCreate />} Submit an Article
+                        </NavLink>
+          ) : (
+            <NavLink to={`/submitarticle`} className={"items-start"}>
+              {<IoIosCreate />} Submit an Article
+            </NavLink>
+          )}
+        </div>
+        <div className="justify-end">
+          <SortBy className="items-end" />
+        </div>
       </div>
+
       <ul>
         {allArticles.map((article) => (
           <ArticlePreviewCard key={article.article_id} article={article} />
