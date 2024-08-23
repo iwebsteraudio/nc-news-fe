@@ -35,7 +35,7 @@ export const fetchCommentsByArticleId = (article_id) => {
     .then((response) => {
       return response.data.commentData;
     }).catch((err)=>{
-      return err.msg;
+      return err;
     });
 };
 

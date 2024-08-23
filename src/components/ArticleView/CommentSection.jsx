@@ -8,7 +8,7 @@ import LoadingSpinner from "./Tools/LoadingSpinner";
 const CommentSection = () => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [err, setErr] = useState("");
+  const [err, setErr] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -33,7 +33,11 @@ const CommentSection = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setErr("Failed to load comments. Please try again later.");
+        if (err.response && err.response.status === 404) {
+          setComments([]);
+        } else {
+          setErr(err);
+        }
         setIsLoading(false);
       });
   }, [article_id]);
@@ -45,18 +49,23 @@ const CommentSection = () => {
         <p>Loading your comments...</p>
       </div>
     );
-  if (err) {
-    return <p className="text-red-500">{err}</p>;
-  }
+
+  // if (err) {
+  //   return <p className="text-red-500">{err.msg}</p>;
+  // }
 
   return (
     <>
-      <h2>Comments</h2>
-      <PostCommentForm comments={comments} setComments={setComments} />
-
-      {comments.length === 0 ? (
-        <p>There Are No Comments Yet</p>
+    
+    {comments.length === 0 ? (
+      <>
+        <p className="p-8">There Are No Comments Yet. Be the first to say something!</p>
+        <PostCommentForm comments={comments} setComments={setComments} />
+        </>
       ) : (
+        <>
+        <h2>Comments</h2>
+        <PostCommentForm comments={comments} setComments={setComments} />
         <ul>
           {comments.map((comment, index) => (
             <CommentCard
@@ -68,8 +77,9 @@ const CommentSection = () => {
             />
           ))}
         </ul>
+        </>
       )}
-    </>
+      </>
   );
 };
 
